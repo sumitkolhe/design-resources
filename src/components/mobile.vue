@@ -14,11 +14,6 @@
         <h2 class="ml-n1" style="letter-spacing:1px; font-weight:800;">The Index</h2>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <h3
-        class="hidden-sm-and-down"
-        style="font-spacing:1px; font-weight:500;"
-      >A curated list of design resources for developers</h3>
-      <v-spacer></v-spacer>
 
       <!--Github Link-->
       <v-btn
@@ -46,7 +41,7 @@
         </svg>
       </v-btn>
 
-        <!--Theme-->
+      <!--Theme-->
       <v-btn
         v-if="isThemeDark==false"
         style="outline:none;"
@@ -84,7 +79,7 @@
     <!-- NAVIGATION DRAWER -->
     <v-navigation-drawer
       v-model="drawer"
-      width="320"
+      width="360"
       app
       fixed
       floating
@@ -124,7 +119,8 @@
       </v-list-item-group>
 
       <v-divider></v-divider>
-
+      <h4 class="px-6 py- text-center">A curated list of design resources for developers</h4>
+      <v-divider></v-divider>
       <v-list dense>
         <v-list-item
           v-for="(item,index) in categories"
@@ -167,7 +163,7 @@
               <v-avatar size="60">
                 <v-img
                   :src="item.logo"
-                  @error="item.logo='https://cdn4.iconfinder.com/data/icons/online-store/300/404-512.png'"
+                  @error="item.logo='https://raw.githubusercontent.com/sumitkolhe/Resources/master/404.png'"
                 ></v-img>
               </v-avatar>
             </v-row>
@@ -236,8 +232,8 @@ export default {
         "Downloadable Design Software",
         "Design Inspiration",
         "Image Compression",
-        "Others"
-      ]
+        "Others",
+      ],
     };
   },
 
@@ -256,7 +252,7 @@ export default {
       this.drawer = !this.drawer;
       this.websiteList = this.localStore[index];
       this.heading = this.localStore[index][0].category;
-    }
+    },
   },
 
   mounted() {
@@ -270,7 +266,7 @@ export default {
     this.localStore = this.data.data.websites;
     this.websiteList = this.localStore[0];
     this.loading = false;
-  }
+  },
 };
 </script>
 
