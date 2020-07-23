@@ -34,7 +34,14 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       </v-btn>
-       <v-btn style="outline:none;" color="svgColor" class="mr-2" icon href="https://github.com/sumitkolhe/theindex" target="_blank">
+      <v-btn
+        style="outline:none;"
+        color="svgColor"
+        class="mr-2"
+        icon
+        href="https://github.com/sumitkolhe/theindex"
+        target="_blank"
+      >
         <svg
           viewBox="0 0 24 24"
           width="26"
@@ -58,8 +65,19 @@
     <v-row class="mt-4">
       <v-col>
         <v-sheet color="slideGroupColor">
-          <v-chip-group mandatory active-class="error--text">
-            <v-chip :href="'#'+i" color="chipsColor" show-arrows v-for="i in categories" :key="i">
+          <v-chip-group
+            mandatory
+            active-class="error--text"
+            prev-icon="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"
+            next-icon="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+          >
+            <v-chip
+              @click="showSelectedCategory(index)"
+              color="chipsColor"
+              show-arrows
+              v-for="(i,index) in categories"
+              :key="i"
+            >
               <a class="text-decoration-none error--text">{{ i }}</a>
             </v-chip>
           </v-chip-group>
@@ -75,43 +93,49 @@
         <v-progress-circular indeterminate :size="50" :width="5" color="svgColor"></v-progress-circular>
       </div>
       <!--END OF LOADING SCREEN-->
-      <div class="my-8" v-for="(it,index) in websites " :key="it.id">
-        <h2 :id="categories[index]" class="mx-6 my-4">{{categories[index]}}</h2>
-        <v-lazy v-model="websites" :options="{threshold: .5}" class="fill-height">
-          <v-sheet color="slideGroupColor" min-height="350" class="fill-height">
-            <v-slide-group show-arrows class="mb-12">
-              <v-slide-item v-for="item in it" :key="item.id">
-                <v-card class="mx-4 my-4 outer" outlined height="350px" width="230px">
-                  <v-col class="text-center">
-                    <v-row class="justify-center mt-4">
-                      <v-avatar size="60">
-                        <v-img :src="item.logo" @error="item.logo='https://cdn4.iconfinder.com/data/icons/online-store/300/404-512.png'"></v-img>
-                      </v-avatar>
-                    </v-row>
-                    <v-row justify="center" dense>
-                      <v-card-title>{{item.title}}</v-card-title>
-                    </v-row>
-                    <v-row justify="center" dense>
-                      <v-card-subtitle class="mt-n4">{{item.description.substring(0,100)+"..."}}</v-card-subtitle>
-                    </v-row>
-                    <v-row justify="center" dense>
-                      <v-card-actions class="card-actions">
-                        <v-btn :href="item.link" target="_blank" large icon>
-                          <svg style="width:32px;height:32px" viewBox="0 0 24 24">
-                            <path
-                              fill="#f55555"
-                              d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"
-                            />
-                          </svg>
-                        </v-btn>
-                      </v-card-actions>
-                    </v-row>
-                  </v-col>
-                </v-card>
-              </v-slide-item>
-            </v-slide-group>
-          </v-sheet>
-        </v-lazy>
+
+      <div class="my-4">
+        <!-- <h2 :id="categories[index]" class="mx-6 my-4">{{categories[index]}}</h2>-->
+
+        <v-row class="mx-4" justify="space-around">
+          <v-card
+            class="mx-4 my-6 outer"
+            outlined
+            height="350px"
+            width="320"
+            v-for="item in visibleWebsites"
+            v-bind:key="item.id"
+          >
+            <v-col class="text-center">
+              <v-row class="justify-center mt-4">
+                <v-avatar size="60">
+                  <v-img
+                    :src="item.logo"
+                    @error="item.logo='https://raw.githubusercontent.com/sumitkolhe/Resources/master/404.png'"
+                  ></v-img>
+                </v-avatar>
+              </v-row>
+              <v-row justify="center" dense>
+                <v-card-title>{{item.title}}</v-card-title>
+              </v-row>
+              <v-row justify="center" dense>
+                <v-card-subtitle class="mt-n4">{{item.description.substring(0,150)+"..."}}</v-card-subtitle>
+              </v-row>
+              <v-row justify="center" dense>
+                <v-card-actions class="card-actions">
+                  <v-btn :href="item.link" target="_blank" large icon>
+                    <svg style="width:32px;height:32px" viewBox="0 0 24 24">
+                      <path
+                        fill="#f55555"
+                        d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"
+                      />
+                    </svg>
+                  </v-btn>
+                </v-card-actions>
+              </v-row>
+            </v-col>
+          </v-card>
+        </v-row>
       </div>
     </v-container>
     <!-- END OF MAIN CARDS -->
@@ -128,6 +152,7 @@ export default {
     return {
       data: [],
       websites: [],
+      visibleWebsites: [],
       categories: [
         "UI Graphics",
         "Fonts",
@@ -152,12 +177,12 @@ export default {
         "Downloadable Design Software",
         "Design Inspiration",
         "Image Compression",
-        "Others"
+        "Others",
       ],
       loading: true,
       iter: 0,
       isActive: false,
-      isThemeDark: false
+      isThemeDark: false,
     };
   },
   methods: {
@@ -168,7 +193,11 @@ export default {
         "isThemeDark",
         JSON.stringify(this.$vuetify.theme.dark)
       );
-    }
+    },
+    showSelectedCategory(index) {
+      this.visibleWebsites = this.websites[index];
+      return this.visibleWebsites;
+    },
   },
 
   mounted() {
@@ -179,8 +208,9 @@ export default {
   async created() {
     this.data = await api.getData();
     this.websites = this.data.data.websites;
+    this.visibleWebsites = this.websites[0];
     this.loading = false;
-  }
+  },
 };
 </script>
 
