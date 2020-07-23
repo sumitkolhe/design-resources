@@ -2,7 +2,7 @@
 
 # :fire: The Index - A curated list of awesome design resources for web developers
 ---
-###  The Index is a unified platform that collects and provides all the awesome design resources that a web developer needs. 
+####  The Index is a unified platform that collects and provides acurated list of awesome design resources that a web developer needs. 
 ---
 ####  :rocket: Also checkout [The Index API](https://github.com/sumitkolhe/theindex-api) - API for The Index platform :rocket:
 ---
