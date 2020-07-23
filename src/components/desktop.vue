@@ -222,7 +222,7 @@ export default {
 .spinner {
   position: absolute;
 
-  top: 250%;
+  top: 280%;
   left: 50%;
 }
 .card-actions {
@@ -240,8 +240,8 @@ export default {
   border: 3px #cfcfcf80 solid;
 }
 .v-sheet.v-card:hover {
-  border: 3px solid #d4d4d4;
-  box-shadow: 0 0 10px #d4d4d4;
+  border: 3px solid #afafaf;
+  box-shadow: 0 0 15px #7c7c7c;
 }
 .v-card__text,
 .v-card__title {
