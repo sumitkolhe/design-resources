@@ -94,7 +94,7 @@
       </div>
       <!--END OF LOADING SCREEN-->
 
-      <div class="my-4">
+      <div class="my-2">
         <!-- <h2 :id="categories[index]" class="mx-6 my-4">{{categories[index]}}</h2>-->
 
         <v-row class="mx-4" justify="space-around">
@@ -222,7 +222,7 @@ export default {
 .spinner {
   position: absolute;
 
-  top: 300%;
+  top: 250%;
   left: 50%;
 }
 .card-actions {
