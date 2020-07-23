@@ -1,6 +1,6 @@
 
 
-# :fire: The Index - Awesome design resources for web developers
+# :fire: The Index - A curated list of awesome design resources for web developers
 ---
 ###  The Index is a unified platform that collects and provides all the awesome design resources that a web developer needs. 
 ---
