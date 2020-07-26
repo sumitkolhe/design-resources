@@ -101,10 +101,11 @@
           <v-card
             class="mx-4 my-6 outer"
             outlined
-            height="350px"
+            height="300px"
             width="320"
             v-for="item in visibleWebsites"
             v-bind:key="item.id"
+            :href="item.link" target="_blank"
           >
             <v-col class="text-center">
               <v-row class="justify-center mt-4">
@@ -121,18 +122,7 @@
               <v-row justify="center" dense>
                 <v-card-subtitle class="mt-n4">{{item.description.substring(0,150)+"..."}}</v-card-subtitle>
               </v-row>
-              <v-row justify="center" dense>
-                <v-card-actions class="card-actions">
-                  <v-btn :href="item.link" target="_blank" large icon>
-                    <svg style="width:32px;height:32px" viewBox="0 0 24 24">
-                      <path
-                        fill="#f55555"
-                        d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"
-                      />
-                    </svg>
-                  </v-btn>
-                </v-card-actions>
-              </v-row>
+           
             </v-col>
           </v-card>
         </v-row>
