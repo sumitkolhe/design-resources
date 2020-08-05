@@ -11,6 +11,14 @@
         style="font-spacing:1px; font-weight:500;"
       >A curated list of design resources for developers</h3>
       <v-spacer></v-spacer>
+      <v-btn @click="overlay = !overlay" color="svgColor" icon>
+        <svg style="width:34px;height:34px" viewBox="0 0 24 24">
+          <path
+            fill="currentColor"
+            d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"
+          />
+        </svg>
+      </v-btn>
 
       <v-btn @click="changeTheme" color="svgColor" class="mx-2" style="outline:none;" icon>
         <svg v-if="!isThemeDark" style="width:36px;height:36px" viewBox="0 0 24 24">
@@ -72,7 +80,7 @@
             next-icon="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
           >
             <v-chip
-              @click="showSelectedCategory(index)"
+              @click="selectCategory(index)"
               color="chipsColor"
               show-arrows
               v-for="(i,index) in categories"
@@ -92,20 +100,20 @@
       <div class="spinner" v-if="loading">
         <v-progress-circular indeterminate :size="50" :width="5" color="svgColor"></v-progress-circular>
       </div>
+
       <!--END OF LOADING SCREEN-->
 
       <div class="my-2">
-        <!-- <h2 :id="categories[index]" class="mx-6 my-4">{{categories[index]}}</h2>-->
-
         <v-row class="mx-4" justify="space-around">
           <v-card
             class="mx-4 my-6 outer"
             outlined
             height="300px"
             width="320"
-            v-for="item in visibleWebsites"
+            v-for="item in showWebsites"
             v-bind:key="item.id"
-            :href="item.link" target="_blank"
+            :href="item.link"
+            target="_blank"
           >
             <v-col class="text-center">
               <v-row class="justify-center mt-4">
@@ -122,12 +130,40 @@
               <v-row justify="center" dense>
                 <v-card-subtitle class="mt-n4">{{item.description.substring(0,150)+"..."}}</v-card-subtitle>
               </v-row>
-           
             </v-col>
           </v-card>
         </v-row>
       </div>
     </v-container>
+    <!--OVERLAY-->
+    <v-overlay :value="overlay" opacity="1">
+      <v-btn class="close" icon @click="overlay = !overlay">
+        <svg style="width:40px;height:40px" viewBox="0 0 24 24">
+          <path
+            fill="currentColor"
+            d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+          />
+        </svg>
+      </v-btn>
+      <v-row>
+        <v-text-field
+          :collapse="true"
+          solo-inverted
+          rounded
+          flat
+          v-model="search"
+          hide-details
+          :placeholder="placeholder"
+        ></v-text-field>
+      </v-row>
+
+      <v-row align="center">
+        <v-col align="center">
+          <v-btn @click="searchWebsites" class="mt-2" color="error" elevation="0">Search</v-btn>
+        </v-col>
+      </v-row>
+    </v-overlay>
+    <!--END OF OVERLAY-->
     <!-- END OF MAIN CARDS -->
   </v-main>
 </template>
@@ -137,12 +173,17 @@ import api from "../controller/api";
 
 export default {
   name: "desktop",
-
   data() {
     return {
-      data: [],
-      websites: [],
-      visibleWebsites: [],
+      localStore: [],
+      filteredWebsites: [],
+      showWebsites: [],
+      heading: "UI Graphics",
+      placeholder: "Enter your keyword here",
+      overlay: false,
+      drawer: false,
+      loading: true,
+      isThemeDark: false,
       categories: [
         "UI Graphics",
         "Fonts",
@@ -169,13 +210,44 @@ export default {
         "Image Compression",
         "Others",
       ],
-      loading: true,
-      iter: 0,
-      isActive: false,
-      isThemeDark: false,
+      search: "",
     };
   },
+
   methods: {
+    searchWebsites() {
+      if (this.search != "") {
+        this.filteredWebsites = [];
+        for (var i = 0; i < this.localStore.length; i++) {
+          for (var j = 0; j < this.localStore[i].length; j++) {
+            if (
+              this.localStore[i][j].title
+                .toLowerCase()
+                .includes(this.search.toLowerCase()) ||
+              this.localStore[i][j].description
+                .toLowerCase()
+                .includes(this.search.toLowerCase())
+            ) {
+              this.filteredWebsites.push({
+                title: this.localStore[i][j].title,
+                description: this.localStore[i][j].description,
+                link: this.localStore[i][j].link,
+                logo: this.localStore[i][j].logo,
+              });
+            }
+          }
+
+          this.showWebsites = this.filteredWebsites;
+        }
+
+        this.heading = "Search results for : " + this.search;
+        this.overlay = !this.overlay;
+      } else {
+        this.search = "";
+        this.placeholder = "Cannot leave empty!";
+      }
+    },
+
     changeTheme() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
       this.isThemeDark = !this.isThemeDark;
@@ -184,9 +256,13 @@ export default {
         JSON.stringify(this.$vuetify.theme.dark)
       );
     },
-    showSelectedCategory(index) {
-      this.visibleWebsites = this.websites[index];
-      return this.visibleWebsites;
+
+    async selectCategory(index) {
+      this.loading = false;
+      this.drawer = !this.drawer;
+      this.showWebsites = this.localStore[index];
+
+      this.heading = this.localStore[index][0].category;
     },
   },
 
@@ -196,9 +272,10 @@ export default {
   },
 
   async created() {
-    this.data = await api.getData();
-    this.websites = this.data.data.websites;
-    this.visibleWebsites = this.websites[0];
+    var temp = [];
+    temp = await api.getData();
+    this.localStore = temp.data.websites;
+    this.showWebsites = this.localStore[0];
     this.loading = false;
   },
 };
@@ -238,5 +315,11 @@ export default {
   word-break: normal; /* maybe !important  */
   font-size: 18px;
   font-weight: 600;
+}
+
+.close {
+  position: fixed;
+  top: 2%;
+  right: 2%;
 }
 </style>
