@@ -12,7 +12,7 @@
       </v-btn>
       <v-toolbar-title>
         <a style="color:currentColor;text-decoration:none;" href="https://theindex.tech">
-          <h2 class="ml-n1" style="letter-spacing:1px; font-weight:800;">The Index</h2>
+          <h2 class="ml-n2" style="letter-spacing:1px; font-weight:800;">The Index</h2>
         </a>
       </v-toolbar-title>
       <v-spacer></v-spacer>
@@ -27,30 +27,6 @@
       </v-btn>
 
       <!--Github Link-->
-      <v-btn
-        style="outline:none;"
-        color="svgColor"
-        icon
-        href="https://github.com/sumitkolhe/theindex"
-        target="_blank"
-        class="mr-1"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          width="27"
-          height="27"
-          stroke="currentColor"
-          stroke-width="2"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="css-i6dzq1"
-        >
-          <path
-            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-          />
-        </svg>
-      </v-btn>
 
       <!--Theme-->
       <v-btn
@@ -130,7 +106,7 @@
       </v-list-item-group>
 
       <v-divider></v-divider>
-      <h4 class="px-6 py- text-center">A curated list of design resources for developers</h4>
+      <h4 class="px-6 py-2 text-center">A curated list of design resources for developers</h4>
       <v-divider></v-divider>
       <v-list dense>
         <v-list-item
@@ -146,6 +122,35 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+
+      <template v-slot:append>
+        <div class="pa-2" align="center">
+          <v-btn
+            style="outline:none;"
+            color="svgColor"
+            icon
+            href="https://github.com/sumitkolhe/theindex"
+            target="_blank"
+            class="mr-1"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="27"
+              height="27"
+              stroke="currentColor"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="css-i6dzq1"
+            >
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+              />
+            </svg>
+          </v-btn>
+        </div>
+      </template>
     </v-navigation-drawer>
     <!-- END OF NAVIGATION DRAWER -->
 
@@ -185,7 +190,12 @@
 
           <v-row align="center">
             <v-col align="center">
-              <v-btn v-on:keyup.enter="searchWebsites" @click="searchWebsites" color="error" elevation="0">Search</v-btn>
+              <v-btn
+                v-on:keyup.enter="searchWebsites"
+                @click="searchWebsites"
+                color="error"
+                elevation="0"
+              >Search</v-btn>
             </v-col>
           </v-row>
         </v-overlay>
