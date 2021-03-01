@@ -14,26 +14,26 @@ module.exports = (req: NowRequest, res: NowResponse) => {
     )
     .then((response) => {
       const converted_html = converter.makeHtml(response.data)
-      var websites: any = []
-      var output = []
-      var category = ''
-      var categoryList: any = []
-      var iter = 0
       const $ = cheerio.load(converted_html)
 
-      for (iter = 0; iter < 28; iter++) {
+      let category_name: string
+      let resources: Array<object> = []
+      let websites: Array<object> = []
+      let categories: Array<string> = []
+
+      for (let iter = 0; iter < 29; iter++) {
         $('body')
           .children('h2')
           .eq(iter + 1)
           .each((i, elem) => {
-            category = $(elem).text()
+            category_name = $(elem).text()
           })
 
         $('body')
           .children('h2')
           .eq(iter + 1)
           .each((i, elem) => {
-            categoryList.push($(elem).text())
+            categories.push($(elem).text())
           })
 
         $('body')
@@ -42,28 +42,24 @@ module.exports = (req: NowRequest, res: NowResponse) => {
           .children('tbody')
           .children('tr')
           .each((i, elem) => {
-            websites[i] = {
+            resources[i] = {
               title: $(elem).children('td:first-child').text(),
               description: $(elem).children('td:nth-child(2)').text(),
               link: $(elem)
                 .children('td:first-child')
                 .children('a')
                 .attr('href'),
-              category: category,
+              category: category_name,
             }
           })
-        category = category.split(' ').join('_').toLowerCase()
-        output[iter] = websites // { [category]: websites };   for with category name per array
-        websites = []
-      }
-      output.splice(4, 1)
-      output.splice(18, 1)
-      categoryList.splice(4, 1)
-      categoryList.splice(18, 1)
 
-      res.json({ categoryList, output })
+        websites[iter] = resources
+        resources = []
+      }
+
+      res.json({ categories, websites })
     })
     .catch(() => {
-      res.json({ message: 'Some error occurred' })
+      res.json({ message: 'Something went wrong' })
     })
 }
