@@ -7,12 +7,23 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
+  data() {
+    return {
+      isThemeDark: false,
+    }
+  },
   mounted() {
-    this.$store.commit('theme/INIT_THEME')
+    (this as any).$vuetify.theme.dark =
+      JSON.parse(localStorage.getItem('isThemeDark')!) || false
   },
   methods: {
     changeTheme() {
-      this.$store.commit('theme/SET_THEME')
+      (this as any).$vuetify.theme.dark = !(this as any).$vuetify.theme.dark
+      this.isThemeDark = !this.isThemeDark
+      localStorage.setItem(
+        'isThemeDark',
+        JSON.stringify((this as any).$vuetify.theme.dark)
+      )
     },
   },
 })

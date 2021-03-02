@@ -1,8 +1,12 @@
 <template>
   <div>
-    <v-row justify="center">
-      <card :websites="all_websites[0]" />
+    <v-row v-if="website_group[0]" justify="center" class="mt-4">
+      <v-chip large class="px-8" color="accent">
+        <span class="font-weight-bold">{{ website_group[0].category }}</span>
+      </v-chip>
     </v-row>
+
+    <cards :websites="website_group" />
     <v-row justify="center" class="mt-12" v-if="loading">
       <v-col align="center" class="mt-12">
         <spinner />
@@ -12,27 +16,28 @@
 </template>
 
 <script lang="ts">
-import axios from 'axios'
 import Vue from 'vue'
 export default Vue.extend({
-  layout: 'mobile',
   data() {
-    return {
-      all_websites: {},
-      loading: true,
-    }
+    return {}
+  },
+
+  computed: {
+    website_group() {
+      return this.$store.getters['websites/GET_WEBSITE_GROUP']
+    },
+    loading() {
+      return this.$store.getters['GET_LOADING']
+    },
   },
 
   async mounted() {
-    await axios
-      .get('api')
-      .then((response) => {
-        this.all_websites = response.data.websites
-        this.loading = false
+    await this.$store
+      .dispatch('websites/fetchData')
+      .then(() => {
+        this.$store.commit('SET_LOADING')
       })
-      .catch((error) => {
-        console.log(error)
-      })
+      .catch((error) => {})
   },
 })
 </script>
