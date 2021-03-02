@@ -1,25 +1,27 @@
-import colors from 'vuetify/es5/util/colors'
-
 export default {
   target: 'static',
   head: {
-    titleTemplate: '%s - index',
-    title: 'index',
+    titleTemplate: '%s - Design Resources for Developers',
+    title: 'The Index',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href:
+          'https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900',
+      },
+    ],
   },
-
-  css: [],
-
-  plugins: [],
 
   components: true,
 
-  buildModules: ['@nuxtjs/vuetify'],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify'],
 
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
 
@@ -37,13 +39,18 @@ export default {
       dark: true,
       themes: {
         dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
+          primary: '#ffffff',
+          secondary: '#613dc1',
+          accent: '#ff5050',
+          surface: '#242424',
+          background: '#121212',
+        },
+        light: {
+          primary: '#111111',
+          secondary: '#00bbf9',
+          accent: '#ff5050',
+          surface: '#fafafa',
+          background: '#fff',
         },
       },
     },

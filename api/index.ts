@@ -2,10 +2,9 @@ import { NowRequest, NowResponse } from '@vercel/node'
 import axios from 'axios'
 import cheerio from 'cheerio'
 import showdown from 'showdown'
-import xray from 'x-ray'
+
 const converter = new showdown.Converter()
 converter.setFlavor('github')
-const x = xray()
 
 module.exports = (req: NowRequest, res: NowResponse) => {
   axios
@@ -49,6 +48,9 @@ module.exports = (req: NowRequest, res: NowResponse) => {
                 .children('td:first-child')
                 .children('a')
                 .attr('href'),
+              logo:
+                'https://logo.clearbit.com/' +
+                $(elem).children('td:first-child').children('a').attr('href'),
               category: category_name,
             }
           })
