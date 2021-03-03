@@ -5,7 +5,7 @@
         <v-icon large>mdi-arrow-right-circle</v-icon>
       </v-btn>
       <v-toolbar-title>
-        <a class="text-decoration-none" href="https://theindex.tech">
+        <a class="text-decoration-none" href="/">
           <h2 class="ml-n2" style="letter-spacing: 1px; font-weight: 800">
             The Index
           </h2>
@@ -90,7 +90,7 @@ export default Vue.extend({
 
   computed: {
     categories() {
-      return this.$store.getters['websites/GET_CATEGORIES']
+      return this.$store.getters['GET_CATEGORIES']
     },
 
     loading() {
@@ -100,7 +100,7 @@ export default Vue.extend({
 
   methods: {
     selectCategory(index: string | number) {
-      this.$store.commit('websites/SET_WEBSITE_GROUP', index)
+      this.$store.commit('SET_WEBSITE_GROUP', index)
     },
   },
 })

@@ -24,7 +24,7 @@ export default Vue.extend({
 
   computed: {
     website_group() {
-      return this.$store.getters['websites/GET_WEBSITE_GROUP']
+      return this.$store.getters['GET_WEBSITE_GROUP']
     },
     loading() {
       return this.$store.getters['GET_LOADING']
@@ -32,10 +32,11 @@ export default Vue.extend({
   },
 
   async mounted() {
+    this.$store.commit('SET_LOADING', true)
     await this.$store
-      .dispatch('websites/fetchData')
+      .dispatch('fetchData')
       .then(() => {
-        this.$store.commit('SET_LOADING')
+        this.$store.commit('SET_LOADING', false)
       })
       .catch((error) => {})
   },
