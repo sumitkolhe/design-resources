@@ -1,10 +1,8 @@
 <template>
   <div>
-    <v-row v-if="bookmarked_websites[0]" justify="center" class="mt-4">
+    <v-row justify="center" class="mt-4">
       <v-chip large class="px-8" color="accent">
-        <span class="font-weight-bold">{{
-          bookmarked_websites[0].category
-        }}</span>
+        <span class="font-weight-bold">Your Bookmarks</span>
       </v-chip>
     </v-row>
 

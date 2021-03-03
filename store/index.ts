@@ -43,7 +43,8 @@ export const actions: ActionTree<WebsitesState, WebsitesState> = {
     const data = (await JSON.parse(localStorage.getItem('bookmarks')!)) || []
     let bookmark_categories: string[] = []
     data.forEach((website: any) => {
-      bookmark_categories.push(website.title)
+      if (bookmark_categories.indexOf(website.category) === -1)
+        bookmark_categories.push(website.category)
     })
     commit('SET_CATEGORIES', bookmark_categories)
     commit('SET_BOOKMARKED_WEBSITES', data)

@@ -34,7 +34,7 @@
               <p
                 v-bind="attrs"
                 v-on="on"
-                class="text-left font-weight-medium mt-2"
+                class="text-left font-weight-medium mt-2 text--secondary"
               >
                 {{ website.description.substring(0, 80) + '...' }}
               </p>

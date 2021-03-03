@@ -4,6 +4,7 @@
       <v-btn class="ml-1" color="primary" @click.stop="drawer = !drawer" icon>
         <v-icon large>mdi-arrow-right-circle</v-icon>
       </v-btn>
+
       <v-toolbar-title>
         <a class="text-decoration-none" href="/">
           <h2 class="ml-n2" style="letter-spacing: 1px; font-weight: 800">
@@ -11,13 +12,19 @@
           </h2>
         </a>
       </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn to="/bookmarks" icon class="mr-2"
-        ><v-icon color="primary" large>mdi-book</v-icon></v-btn
-      >
-      <theme-switch class="mr-2" />
-    </v-app-bar>
 
+      <v-spacer></v-spacer>
+
+      <v-btn to="/bookmarks" large depressed color="accent" class="mr-4"
+        >Bookmarks</v-btn
+      >
+      <theme-switch class="mr-4" />
+
+      <v-btn icon class="mr-2" @click.stop="showAbout = true"
+        ><v-icon color="primary" large>mdi-information</v-icon>
+        <about v-model="showAbout"
+      /></v-btn>
+    </v-app-bar>
     <v-navigation-drawer
       exact
       v-model="drawer"
@@ -85,6 +92,7 @@ export default Vue.extend({
   data() {
     return {
       drawer: true,
+      showAbout: false,
     }
   },
 
