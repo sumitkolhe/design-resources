@@ -12,27 +12,29 @@
         </a>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon class="mr-2"><v-icon large>mdi-book</v-icon></v-btn>
+      <v-btn to="/bookmarks" icon class="mr-2"
+        ><v-icon large>mdi-book</v-icon></v-btn
+      >
       <theme-switch class="mr-2" />
     </v-app-bar>
 
     <v-navigation-drawer
+      exact
       v-model="drawer"
       width="350"
       app
-      dark
       fixed
-      color="background"
+      color="surface"
     >
       <v-list-item-group>
         <v-row cols="12">
           <v-col>
             <v-list-item-content>
               <v-list-item-title>
-                <h1 class="mb-2 ml-2">The Index</h1>
+                <h1 class="my-2 ml-6">The Index</h1>
               </v-list-item-title>
               <v-list-item-subtitle>
-                <h4 class="ml-2">by Sumit Kolhe</h4>
+                <h4 class="ml-6 mb-2">by Sumit Kolhe</h4>
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-col>
@@ -47,7 +49,7 @@
         </v-col>
       </v-row>
 
-      <v-list nav dense v-else>
+      <v-list-item-group v-else class="mt-6">
         <v-list-item
           v-for="(item, index) in categories"
           :key="index"
@@ -55,12 +57,12 @@
           link
         >
           <v-list-item-content>
-            <v-list-item-title>
-              <h3 class="text-wrap">{{ item }}</h3>
+            <v-list-item-title v-text="item" class="font-weight-medium">
+              <!-- <h3 class="text-wrap">{{ item }}</h3> -->
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-      </v-list>
+      </v-list-item-group>
 
       <template v-slot:append>
         <div class="pa-2" align="center">
@@ -109,19 +111,15 @@ export default Vue.extend({
   font-family: 'Montserrat', sans-serif;
 }
 
-.v-list-item__content {
-  align-items: center;
-  align-self: center;
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1 1;
-  overflow: hidden;
-  padding: 1rem;
-}
 .v-list-item {
-  padding: 0.5rem 1.5rem;
-  border-radius: 0.5rem;
-  margin: 1rem 1.5rem;
-  background-color: #8b8b8b3d;
+  padding: 4px 20px;
+  border-radius: 12px;
+  margin: 12px 18px !important;
+  border: 3px #91919141 solid;
+}
+
+::before,
+::after {
+  border-radius: 8px !important;
 }
 </style>

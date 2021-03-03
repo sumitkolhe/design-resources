@@ -6,7 +6,7 @@
     "dev": "nuxt",
     "build": "nuxt generate",
     "start": "nuxt start",
-    "vercel": "vercel dev",
+    "vercel": "vercel dev --listen 80",
     "deploy": "vercel deploy --prod"
   },
   "dependencies": {

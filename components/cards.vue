@@ -15,14 +15,7 @@
           <v-avatar size="50">
             <v-img :src="website.logo"></v-img>
           </v-avatar>
-          <v-btn v-if="bookmarked" icon class="bookmark ma-4"
-            ><v-icon large color="accent">mdi-bookmark-plus</v-icon></v-btn
-          >
-          <v-btn v-else icon class="bookmark ma-4"
-            ><v-icon large color="accent"
-              >mdi-bookmark-plus-outline</v-icon
-            ></v-btn
-          >
+          <bookmark :website="website" />
         </v-row>
         <v-row>
           <h3
@@ -32,9 +25,18 @@
           </h3>
         </v-row>
         <v-row>
-          <p class="text-left font-weight-medium text--secondary mt-2">
-            {{ website.description.substring(0, 80) + '...' }}
-          </p>
+          <v-tooltip max-width="300px" bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <p
+                v-bind="attrs"
+                v-on="on"
+                class="text-left font-weight-medium text--secondary mt-2"
+              >
+                {{ website.description.substring(0, 80) + '...' }}
+              </p>
+            </template>
+            <span> {{ website.description }}</span>
+          </v-tooltip>
         </v-row>
       </v-col>
     </v-card>
@@ -47,20 +49,12 @@ export default Vue.extend({
   props: { websites: {} },
 
   data() {
-    return {
-      bookmarked: false,
-    }
+    return {}
   },
 })
 </script>
 
 <style scoped>
-.bookmark {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
 .v-card__text,
 .v-card__title {
   word-break: normal;
