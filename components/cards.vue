@@ -15,7 +15,11 @@
           <v-avatar size="50">
             <v-img :src="website.logo"></v-img>
           </v-avatar>
-          <bookmark :website="website" />
+          <bookmark
+            @render="renderBookmarks"
+            :key="render_key"
+            :website="website"
+          />
         </v-row>
         <v-row>
           <h3
@@ -49,7 +53,14 @@ export default Vue.extend({
   props: { websites: {} },
 
   data() {
-    return {}
+    return {
+      render_key: 0,
+    }
+  },
+  methods: {
+    renderBookmarks() {
+      this.render_key += 1
+    },
   },
 })
 </script>

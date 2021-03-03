@@ -25,6 +25,8 @@ export default {
 
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
 
+  plugins: ['~/plugins/notifier.ts'],
+
   axios: {},
 
   pwa: {

@@ -3,6 +3,7 @@
     <v-main
       ><navigation />
       <v-container>
+        <notification />
         <nuxt />
       </v-container>
     </v-main>
