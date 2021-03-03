@@ -13,7 +13,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn to="/bookmarks" icon class="mr-2"
-        ><v-icon large>mdi-book</v-icon></v-btn
+        ><v-icon color="primary" large>mdi-book</v-icon></v-btn
       >
       <theme-switch class="mr-2" />
     </v-app-bar>

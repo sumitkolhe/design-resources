@@ -1,10 +1,21 @@
 <template>
-  <v-btn @click="bookmarkWebsite(website)" icon class="bookmark ma-4"
-    ><v-icon large color="accent" v-if="bookmarked.indexOf(website.title) != -1"
-      >mdi-bookmark</v-icon
+  <div>
+    <v-btn
+      @click="removeBookmark(website)"
+      icon
+      class="bookmark ma-4"
+      v-if="is_bookmarked(website)"
+      ><v-icon large color="accent">mdi-bookmark</v-icon>
+    </v-btn>
+
+    <v-btn @click="addBookmark(website)" icon class="bookmark ma-4" v-else>
+      <v-icon large color="accent">mdi-bookmark-outline</v-icon></v-btn
     >
-    <v-icon v-else large color="accent">mdi-bookmark-outline</v-icon></v-btn
-  >
+    <v-snackbar v-model="snackbar" color="accent" timeout="2000">
+      <span class="font-weight-bold">{{ website.title }}</span>
+      added to bookmarks!
+    </v-snackbar>
+  </div>
 </template>
 
 <script lang="ts">
@@ -14,18 +25,19 @@ export default Vue.extend({
 
   data() {
     return {
-      bookmarked: '',
+      bookmarked_websites: '',
+      snackbar: false,
     }
   },
 
-  mounted() {
-    let temp = JSON.parse(localStorage.getItem('bookmarks')!) || []
-    this.bookmarked = JSON.stringify(temp)
+  async mounted() {
+    let temp = (await JSON.parse(localStorage.getItem('bookmarks')!)) || []
+    this.bookmarked_websites = JSON.stringify(temp)
   },
 
   methods: {
-    bookmarkWebsite(website: any) {
-      console.log(website)
+    addBookmark(website: any) {
+      console.log('adding bookmark')
       let bookmarks = []
       bookmarks = JSON.parse(localStorage.getItem('bookmarks')!) || []
       if (JSON.stringify(bookmarks).indexOf(website.title) != -1) {
@@ -34,6 +46,25 @@ export default Vue.extend({
 
       bookmarks.push(website)
       localStorage.setItem('bookmarks', JSON.stringify(bookmarks))
+      this.snackbar = true
+    },
+    removeBookmark(website: any) {
+      console.log('removing bookmark')
+      let updated_bookmarks = []
+      updated_bookmarks = JSON.parse(localStorage.getItem('bookmarks')!)
+
+      let index = updated_bookmarks
+        .map((item: any) => {
+          return item.title
+        })
+        .indexOf(website.title)
+
+      updated_bookmarks.splice(index, 1)
+      localStorage.setItem('bookmarks', JSON.stringify(updated_bookmarks))
+    },
+
+    is_bookmarked(website: any) {
+      return this.bookmarked_websites.indexOf(website.title) != -1
     },
   },
 })

@@ -10,7 +10,7 @@ export default Vue.extend({})
 <style>
 .spinner {
   display: inline-block;
-  border: 4px solid #ff4646;
+  border: 5px solid #ff4646;
   border-left-color: #ffffff;
   border-radius: 50%;
   width: 50px;

@@ -1,6 +1,6 @@
 <template>
   <v-btn icon @click="changeTheme()">
-    <v-icon large>mdi-white-balance-sunny</v-icon>
+    <v-icon color="primary" large>mdi-white-balance-sunny</v-icon>
   </v-btn>
 </template>
 
@@ -13,12 +13,12 @@ export default Vue.extend({
     }
   },
   mounted() {
-    (this as any).$vuetify.theme.dark =
+    ;(this as any).$vuetify.theme.dark =
       JSON.parse(localStorage.getItem('isThemeDark')!) || false
   },
   methods: {
     changeTheme() {
-      (this as any).$vuetify.theme.dark = !(this as any).$vuetify.theme.dark
+      ;(this as any).$vuetify.theme.dark = !(this as any).$vuetify.theme.dark
       this.isThemeDark = !this.isThemeDark
       localStorage.setItem(
         'isThemeDark',
