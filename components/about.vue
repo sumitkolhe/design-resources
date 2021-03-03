@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="show" width="350">
+  <v-dialog v-model="show" max-width="350">
     <v-card class="px-6 py-4">
       <v-row justify="center">
         <v-col justify="center" align="center">
@@ -7,25 +7,22 @@
           <p>A curated list of design resources for developers.</p>
         </v-col>
       </v-row>
-
-      <v-sheet color="accent" rounded="lg" class="my-4">
-        <v-row justify="center">
+      <v-divider></v-divider>
+      <v-sheet rounded="lg">
+        <v-row justify="center" class="my-2">
           <v-col justify="center" align="center">
             <h3>Author</h3>
-            <v-btn
-              depressed
-              class="mt-2"
-              target="_blank"
-              href="https://sumit.codes"
+            <v-btn plain class="mt-2" target="_blank" href="https://sumit.codes"
               >Sumit Kolhe</v-btn
             >
           </v-col>
         </v-row>
-        <v-row justify="center">
+        <v-divider></v-divider>
+        <v-row justify="center" class="my-2">
           <v-col justify="center" align="center">
             <h4>Github</h4>
             <v-btn
-              depressed
+              plain
               class="mt-2"
               target="_blank"
               href="https://github.com/sumitkolhe/theindex"
@@ -34,9 +31,9 @@
           </v-col>
         </v-row>
       </v-sheet>
-
-      <v-row justify="center" class="mt-8 mb-2">
-        <v-btn depressed color="primary" @click="show = false">Close</v-btn>
+      <v-divider></v-divider>
+      <v-row justify="center" class="mt-4 mb-2">
+        <v-btn depressed color="accent" @click="show = false">Close</v-btn>
       </v-row>
     </v-card>
   </v-dialog>

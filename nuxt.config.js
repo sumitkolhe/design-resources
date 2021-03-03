@@ -1,5 +1,6 @@
 export default {
   target: 'static',
+  ssr: false,
   head: {
     titleTemplate: '%s - Design Resources for Developers',
     title: 'The Index',

@@ -1,26 +1,32 @@
 <template>
   <div>
     <v-app-bar flat app height="85" color="background">
-      <v-btn class="ml-1" color="primary" @click.stop="drawer = !drawer" icon>
+      <v-btn
+        class="ml-sm-1"
+        color="primary"
+        @click.stop="drawer = !drawer"
+        icon
+      >
         <v-icon large>mdi-arrow-right-circle</v-icon>
       </v-btn>
 
       <v-toolbar-title>
         <a class="text-decoration-none" href="/">
-          <h2 class="ml-n2" style="letter-spacing: 1px; font-weight: 800">
-            The Index
-          </h2>
+          <h2 class="ml-n3">The Index</h2>
         </a>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-btn to="/bookmarks" large depressed color="accent" class="mr-4"
-        >Bookmarks</v-btn
+      <v-btn to="/bookmarks" icon class="mr-sm-4"
+        ><v-icon color="primary" large>mdi-book-open-variant</v-icon></v-btn
       >
-      <theme-switch class="mr-4" />
+      <theme-switch class="mr-sm-4" />
 
-      <v-btn icon class="mr-2" @click.stop="showAbout = true"
+      <v-btn
+        icon
+        class="mr-sm-2 d-none d-sm-block"
+        @click.stop="showAbout = true"
         ><v-icon color="primary" large>mdi-information</v-icon>
         <about v-model="showAbout"
       /></v-btn>
@@ -33,17 +39,23 @@
       fixed
       color="surface"
     >
-      <v-list-item-group>
-        <v-row cols="12">
-          <v-col>
+      <v-list-item-group class="py-1">
+        <v-row cols="6">
+          <v-col class="text-center ml-4">
             <v-list-item-content>
               <v-list-item-title>
-                <h1 class="my-2 ml-6">The Index</h1>
+                <h1 class="mb-2">The Index</h1>
               </v-list-item-title>
               <v-list-item-subtitle>
-                <h4 class="ml-6 mb-2">by Sumit Kolhe</h4>
+                <h4>by Sumit kolhe</h4>
               </v-list-item-subtitle>
             </v-list-item-content>
+          </v-col>
+          <v-col class="text-right mt-4 mr-4 d-sm-none">
+            <v-btn icon class="mr-2" @click.stop="showAbout = true"
+              ><v-icon color="primary" x-large>mdi-information</v-icon>
+              <about v-model="showAbout"
+            /></v-btn>
           </v-col>
         </v-row>
       </v-list-item-group>
@@ -71,7 +83,7 @@
         </v-list-item>
       </v-list-item-group>
 
-      <template v-slot:append>
+      <!-- <template v-slot:append>
         <div class="pa-2" align="center">
           <v-btn
             icon
@@ -81,7 +93,7 @@
             <v-icon color="primary" large>mdi-github</v-icon>
           </v-btn>
         </div>
-      </template>
+      </template> -->
     </v-navigation-drawer>
   </div>
 </template>
