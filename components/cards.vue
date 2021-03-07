@@ -9,6 +9,7 @@
       target="_blank"
       v-for="website in websites"
       :key="website.link"
+      :href="website.link"
     >
       <v-col class="text-left">
         <v-row>

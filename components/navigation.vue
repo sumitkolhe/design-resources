@@ -1,36 +1,6 @@
 <template>
-  <div>
-    <v-app-bar flat app height="85" color="background">
-      <v-btn
-        class="ml-sm-1"
-        color="primary"
-        @click.stop="drawer = !drawer"
-        icon
-      >
-        <v-icon large>mdi-arrow-right-circle</v-icon>
-      </v-btn>
-
-      <v-toolbar-title>
-        <a class="text-decoration-none" href="/">
-          <h2 class="ml-n3">The Index</h2>
-        </a>
-      </v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-btn to="/bookmarks" icon class="mr-sm-4"
-        ><v-icon color="primary" large>mdi-book-open-variant</v-icon></v-btn
-      >
-      <theme-switch class="mr-sm-4" />
-
-      <v-btn
-        icon
-        class="mr-sm-2 d-none d-sm-block"
-        @click.stop="showAbout = true"
-        ><v-icon color="primary" large>mdi-information</v-icon>
-        <about v-model="showAbout"
-      /></v-btn>
-    </v-app-bar>
+  <v-main>
+    <appbar @toggleDrawer="Drawer" />
     <v-navigation-drawer
       exact
       v-model="drawer"
@@ -42,17 +12,19 @@
       <v-list-item-group class="py-1">
         <v-row cols="6">
           <v-col class="text-center ml-4">
-            <v-list-item-content>
-              <v-list-item-title>
-                <h1 class="mb-2">The Index</h1>
-              </v-list-item-title>
-              <v-list-item-subtitle>
-                <h4>by Sumit kolhe</h4>
-              </v-list-item-subtitle>
-            </v-list-item-content>
+            <a href="/" class="text-decoration-none">
+              <v-list-item-content>
+                <v-list-item-title>
+                  <h1 class="mb-2 font-weight-bold">The Index</h1>
+                </v-list-item-title>
+                <v-list-item-subtitle>
+                  <h4>by Sumit kolhe</h4>
+                </v-list-item-subtitle>
+              </v-list-item-content></a
+            >
           </v-col>
-          <v-col class="text-right mt-4 mr-4 d-sm-none">
-            <v-btn icon class="mr-2" @click.stop="showAbout = true"
+          <v-col class="text-right mt-4 mr-4">
+            <v-btn icon class="mr-2 d-sm-none" @click.stop="showAbout = true"
               ><v-icon color="primary" x-large>mdi-information</v-icon>
               <about v-model="showAbout"
             /></v-btn>
@@ -68,7 +40,7 @@
         </v-col>
       </v-row>
 
-      <v-list-item-group v-else class="mt-6">
+      <v-list-item-group v-else class="mt-6 mb-8">
         <v-list-item
           v-for="(item, index) in categories"
           :key="index"
@@ -76,8 +48,7 @@
           link
         >
           <v-list-item-content>
-            <v-list-item-title v-text="item" class="font-weight-medium">
-              <!-- <h3 class="text-wrap">{{ item }}</h3> -->
+            <v-list-item-title v-text="item" class="font-weight-bold">
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -95,7 +66,7 @@
         </div>
       </template> -->
     </v-navigation-drawer>
-  </div>
+  </v-main>
 </template>
 
 <script lang="ts">
@@ -103,8 +74,8 @@ import Vue from 'vue'
 export default Vue.extend({
   data() {
     return {
-      drawer: true,
       showAbout: false,
+      drawer: true,
     }
   },
 
@@ -118,9 +89,21 @@ export default Vue.extend({
     },
   },
 
+  watch: {
+    openDrawer() {
+      if ((this as any).$vuetify.breakpoint.width > 600) {
+        this.drawer = true
+      }
+    },
+  },
+
   methods: {
     selectCategory(index: string | number) {
       this.$store.commit('SET_WEBSITE_GROUP', index)
+    },
+
+    Drawer() {
+      this.drawer = !this.drawer
     },
   },
 })
