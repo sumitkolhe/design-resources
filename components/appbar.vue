@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar flat app :height="height" color="transparent">
+  <v-app-bar flat app :height="height" color="background">
     <v-btn class="ml-sm-1" color="primary" @click.stop="changeDrawer()" icon>
       <v-icon large>mdi-arrow-right-circle</v-icon>
     </v-btn>

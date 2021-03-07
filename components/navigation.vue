@@ -1,5 +1,5 @@
 <template>
-  <v-main>
+  <div>
     <appbar @toggleDrawer="Drawer" />
     <v-navigation-drawer
       exact
@@ -7,7 +7,7 @@
       width="350"
       app
       fixed
-      color="surface"
+      color="background"
     >
       <v-list-item-group class="py-1">
         <v-row cols="6">
@@ -66,7 +66,7 @@
         </div>
       </template> -->
     </v-navigation-drawer>
-  </v-main>
+  </div>
 </template>
 
 <script lang="ts">

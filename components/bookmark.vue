@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-btn
+      @click.stop.prevent
       @click="removeBookmark(website)"
       icon
       class="bookmark ma-4"
@@ -8,7 +9,13 @@
       ><v-icon large color="accent">mdi-bookmark</v-icon>
     </v-btn>
 
-    <v-btn @click="addBookmark(website)" icon class="bookmark ma-4" v-else>
+    <v-btn
+      @click.stop.prevent
+      @click="addBookmark(website)"
+      icon
+      class="bookmark ma-4"
+      v-else
+    >
       <v-icon large color="accent">mdi-bookmark-outline</v-icon></v-btn
     >
   </div>

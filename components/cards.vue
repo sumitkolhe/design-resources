@@ -1,7 +1,7 @@
 <template>
-  <v-row justify="center" class="mt-6">
+  <v-row justify="center" class="mt-8">
     <v-card
-      class="ma-6 pa-5"
+      class="ma-5 pa-5"
       outlined
       hover
       height="220px"
@@ -13,9 +13,10 @@
     >
       <v-col class="text-left">
         <v-row>
-          <v-avatar size="50">
+          <v-avatar size="50" color="primary">
             <v-img :src="website.logo"></v-img>
           </v-avatar>
+
           <bookmark
             @render="renderBookmarks"
             :key="render_key"
@@ -79,7 +80,7 @@ export default Vue.extend({
 }
 .v-sheet.v-card:hover {
   border: 3px solid #91919141;
-  box-shadow: 0 0 10px #9191916e;
+  box-shadow: 0 0 12px #9191916e;
 }
 
 .v-avatar {
