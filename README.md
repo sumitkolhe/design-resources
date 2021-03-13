@@ -1,20 +1,70 @@
-# index
+# :fire: The Index - A curated list of awesome design resources for web developers
 
-## Build Setup
+#### The Index is a unified platform that collects and provides a curated list of awesome design resources that a web developer needs.
 
-```bash
-# install dependencies
-$ npm install
+### ✨ Features
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+:heart: **Lightweight and minimalistic design**: Highly minimal and simple design
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+:rainbow: **Dark Mode**: Tend to your eyes in the darkness
 
-# generate static project
-$ npm run generate
+:zap: **Easy to use**: Simple and intuitive design thats easy to use
+
+:rocket: **Performance**: The Index is built using Vuejs, HTML5, and CSS3 which makes it lightning-fast and gives a great performance.
+
+---
+
+## 🖥️ Demo
+
+[https://theindex.tech](https://theindex.tech)
+
+---
+
+## 🧰 Built with
+
+- VueJS
+- Vuetify
+- HTML5
+- CSS3
+
+## :construction_worker: Setup
+
+- Clone the Repository.
+
+```
+$ git clone https://github.com/sumitkolhe/theindex
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+- Install the dependencies for the backend
+
+```
+$ cd theindex
+
+$ npm install
+```
+
+- Compiles and hot-reloads for development
+
+```
+$ npm run serve
+```
+
+- Compiles and minifies for production
+
+```
+$ npm run build
+```
+
+- Lints and fixes files
+
+```
+$ npm run lint
+```
+
+## ✍️ Authors
+
+- [**Sumit Kolhe**](https://github.com/sumitkolhe) - _Author_
+
+## 📜 License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) - see the [LICENSE](LICENSE) file for details.
