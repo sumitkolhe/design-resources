@@ -1,8 +1,8 @@
-# :fire: The Index - A curated list of awesome design resources for web developers
+# :fire: The Index
 
-#### The Index is a unified platform that collects and provides a curated list of awesome design resources that a web developer needs.
+A curated list of awesome design resources for web developers
 
-### ✨ Features
+# ✨ Features
 
 :heart: **Lightweight and minimalistic design**: Highly minimal and simple design
 
@@ -10,13 +10,11 @@
 
 :zap: **Easy to use**: Simple and intuitive design thats easy to use
 
+:bookmark: **Bookmarks**: Bookmark your favourite resources easily.
+
+:mag: **Search**: Looking for a particular resource? Just search for it using the search button.
+
 :rocket: **Performance**: The Index is built using Vuejs, HTML5, and CSS3 which makes it lightning-fast and gives a great performance.
-
----
-
-## 🖥️ Demo
-
-[https://theindex.tech](https://theindex.tech)
 
 ---
 
