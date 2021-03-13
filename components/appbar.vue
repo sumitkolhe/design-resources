@@ -6,13 +6,15 @@
 
     <v-toolbar-title>
       <a class="text-decoration-none" href="/">
-        <h2 class="ml-n3 d-sm-none">The Index</h2>
+        <h4 class="ml-n3 d-sm-none">The Index</h4>
       </a>
     </v-toolbar-title>
 
     <v-spacer></v-spacer>
     <a class="text-decoration-none" href="/">
-      <h2 class="px-6 py-2 text-center d-none d-md-block">The Index</h2>
+      <h3 class="px-6 py-2 text-center d-none d-sm-block">
+        Curated Design Resources for Developers
+      </h3>
     </a>
     <v-spacer></v-spacer>
     <v-tooltip max-width="300px" bottom>

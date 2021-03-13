@@ -6,7 +6,12 @@
       </v-chip>
     </v-row>
 
-    <cards :websites="bookmarked_websites" />
+    <cards v-if="bookmarked_websites != ''" :websites="bookmarked_websites" />
+    <div v-else class="pt-12">
+      <v-row justify="center" class="mt-12">
+        <img src="../assets/empty-bookmarks.svg" alt="" class="mt-12" />
+      </v-row>
+    </div>
     <v-row justify="center" class="mt-12" v-if="loading">
       <v-col align="center" class="mt-12">
         <spinner />

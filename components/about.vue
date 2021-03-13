@@ -12,7 +12,11 @@
         <v-row justify="center" class="my-2">
           <v-col justify="center" align="center">
             <h3>Author</h3>
-            <v-btn plain class="mt-2" target="_blank" href="https://sumit.codes"
+            <v-btn
+              depressed
+              class="mt-2"
+              target="_blank"
+              href="https://sumit.codes"
               >Sumit Kolhe</v-btn
             >
           </v-col>
@@ -22,7 +26,7 @@
           <v-col justify="center" align="center">
             <h4>Github</h4>
             <v-btn
-              plain
+              depressed
               class="mt-2"
               target="_blank"
               href="https://github.com/sumitkolhe/theindex"
@@ -33,7 +37,7 @@
       </v-sheet>
       <v-divider></v-divider>
       <v-row justify="center" class="mt-4 mb-2">
-        <v-btn depressed color="accent" @click="show = false">Close</v-btn>
+        <v-btn outlined color="accent" @click="show = false">Close</v-btn>
       </v-row>
     </v-card>
   </v-dialog>

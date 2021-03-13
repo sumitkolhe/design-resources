@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row v-if="website_group[0]" justify="center" class="mt-12">
+    <v-row v-if="website_group[0]" justify="center" class="mt-sm-8 mt-2">
       <v-chip large class="px-8" color="accent">
         <span class="font-weight-bold">{{ website_group[0].category }}</span>
       </v-chip>
