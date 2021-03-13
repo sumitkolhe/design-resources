@@ -29,7 +29,7 @@
       <template v-slot:activator="{ on, attrs }">
         <v-btn v-bind="attrs" v-on="on" to="/bookmarks" icon class="mr-sm-4"
           ><v-icon color="primary" :large="!isMobile"
-            >mdi-bookmark</v-icon
+            >mdi-bookmark-multiple</v-icon
           ></v-btn
         >
       </template>
