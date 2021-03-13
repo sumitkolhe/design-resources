@@ -43,7 +43,7 @@
       <v-list-item-group v-else class="mt-6 mb-8">
         <v-list-item
           v-for="(item, index) in categories"
-          :key="index"
+          :key="index + item"
           @click="selectCategory(index)"
           link
         >
@@ -75,7 +75,7 @@ export default Vue.extend({
   data() {
     return {
       showAbout: false,
-      drawer: true,
+      drawer: false,
     }
   },
 
@@ -89,17 +89,20 @@ export default Vue.extend({
     },
   },
 
-  watch: {
-    openDrawer() {
-      if ((this as any).$vuetify.breakpoint.width > 600) {
-        this.drawer = true
-      }
-    },
+  mounted() {
+    if ((this as any).$vuetify.breakpoint.width > 600) {
+      this.drawer = true
+    }
   },
 
   methods: {
     selectCategory(index: string | number) {
       this.$store.commit('SET_WEBSITE_GROUP', index)
+      if (!((this as any).$vuetify.breakpoint.width > 600)) {
+        this.drawer = !this.drawer
+      }
+
+      if (this.$nuxt.$route.path != '/') this.$router.push('/')
     },
 
     Drawer() {

@@ -4,11 +4,11 @@
       class="ma-5 pa-5"
       outlined
       hover
-      height="220px"
+      :height="showCategory ? '260px' : '220px'"
       width="350"
       target="_blank"
       v-for="website in websites"
-      :key="website.link"
+      :key="website.description + website.title"
       :href="website.link"
     >
       <v-col class="text-left">
@@ -44,6 +44,11 @@
             <span> {{ website.description }}</span>
           </v-tooltip>
         </v-row>
+        <v-row v-if="showCategory">
+          <v-chip class="px-4 category-chip" color="accent" outlined>
+            <span class="font-weight-bold">{{ website.category }}</span>
+          </v-chip>
+        </v-row>
       </v-col>
     </v-card>
   </v-row>
@@ -52,7 +57,7 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  props: { websites: {} },
+  props: { websites: {}, showCategory: Boolean },
 
   data() {
     return {
@@ -68,6 +73,12 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.category-chip {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 16px;
+}
 .v-card__text,
 .v-card__title {
   word-break: normal;
@@ -80,7 +91,7 @@ export default Vue.extend({
 }
 .v-sheet.v-card:hover {
   border: 3px solid #91919141;
-  box-shadow: 0 0 12px #9191916e;
+  box-shadow: 0 0 10px #9191916e;
 }
 
 .v-avatar {

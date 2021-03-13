@@ -1,12 +1,12 @@
 <template>
   <div>
-    <v-row v-if="website_group[0]" justify="center" class="mt-4">
+    <v-row v-if="website_group[0]" justify="center" class="mt-12">
       <v-chip large class="px-8" color="accent">
         <span class="font-weight-bold">{{ website_group[0].category }}</span>
       </v-chip>
     </v-row>
 
-    <cards :websites="website_group" />
+    <cards :websites="website_group" :showCategory="false" />
     <v-row justify="center" class="mt-12" v-if="loading">
       <v-col align="center" class="mt-12">
         <spinner />

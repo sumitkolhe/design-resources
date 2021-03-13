@@ -6,6 +6,7 @@ export const state = () => ({
   all_websites: [],
   categories: [],
   bookmarked_websites: [],
+  filtered_websites: <any>[],
   website_group: Array(),
   category: 0,
   loading: true,
@@ -21,6 +22,35 @@ export const mutations: MutationTree<WebsitesState> = {
   SET_BOOKMARKED_WEBSITES: (state, websites) => {
     state.bookmarked_websites = websites
   },
+  SET_FILTERED_WEBSITES: (state, search_term) => {
+    state.filtered_websites = []
+    state.all_websites.forEach((website_group: any) =>
+      website_group.forEach((website: any) => {
+        if (
+          website.title.includes(search_term) ||
+          website.description.includes(search_term)
+        ) {
+          state.filtered_websites.push(
+            //   {
+            //   title: website.title,
+            //   description: website.description,
+            //   link: website.link,
+            //   logo: website.logo,
+            //   category: website.category,
+            // }
+            website
+          )
+        }
+      })
+    )
+
+    // filtered.forEach((website: any) => {
+    //   if (website.length != 0) state.filtered_websites.push(website)
+    // })
+
+    // state.filtered_websites = filtered as any
+    //console.log(state.filtered_websites)
+  },
   SET_CATEGORIES: (state, categories) => {
     state.categories = categories
   },
@@ -34,7 +64,7 @@ export const mutations: MutationTree<WebsitesState> = {
 
 export const actions: ActionTree<WebsitesState, WebsitesState> = {
   async fetchData({ commit }) {
-    const data = await this.$axios.$get('http://localhost/api')
+    const data = await this.$axios.$get('https://theindex.tech/api')
     commit('SET_CATEGORIES', data.categories)
     commit('SET_ALL_WEBSITES', data.websites)
     commit('SET_WEBSITE_GROUP', 0)
@@ -57,6 +87,9 @@ export const getters: GetterTree<WebsitesState, WebsitesState> = {
   },
   GET_WEBSITE_GROUP: (state) => {
     return state.website_group
+  },
+  GET_FILTERED_WEBSITES: (state) => {
+    return state.filtered_websites
   },
   GET_BOOKMARKED_WEBSITES: (state) => {
     return state.bookmarked_websites

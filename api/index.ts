@@ -7,9 +7,9 @@ const converter = new showdown.Converter()
 converter.setFlavor('github')
 
 module.exports = (req: NowRequest, res: NowResponse) => {
-  // res.setHeader('Access-Control-Allow-Origin', '*')
-  // res.setHeader('Access-Control-Allow-Headers', '*')
-  // res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS')
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Headers', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS')
 
   axios
     .get(
