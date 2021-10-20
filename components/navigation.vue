@@ -15,11 +15,8 @@
             <a href="/" class="text-decoration-none">
               <v-list-item-content>
                 <v-list-item-title>
-                  <h1 class="mb-2 font-weight-bold">The Index</h1>
+                  <h1 class="mb-2 font-weight-bold">Design Resources</h1>
                 </v-list-item-title>
-                <v-list-item-subtitle>
-                  <h4>by Sumit kolhe</h4>
-                </v-list-item-subtitle>
               </v-list-item-content></a
             >
           </v-col>

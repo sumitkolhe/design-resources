@@ -6,7 +6,7 @@
 
     <v-toolbar-title>
       <a class="text-decoration-none" href="/">
-        <h4 class="ml-n3 d-sm-none">The Index</h4>
+        <h4 class="ml-n3 d-sm-none">Design Resources</h4>
       </a>
     </v-toolbar-title>
 
