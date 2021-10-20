@@ -30,26 +30,10 @@ export const mutations: MutationTree<WebsitesState> = {
           website.title.includes(search_term) ||
           website.description.includes(search_term)
         ) {
-          state.filtered_websites.push(
-            //   {
-            //   title: website.title,
-            //   description: website.description,
-            //   link: website.link,
-            //   logo: website.logo,
-            //   category: website.category,
-            // }
-            website
-          )
+          state.filtered_websites.push(website)
         }
       })
     )
-
-    // filtered.forEach((website: any) => {
-    //   if (website.length != 0) state.filtered_websites.push(website)
-    // })
-
-    // state.filtered_websites = filtered as any
-    //console.log(state.filtered_websites)
   },
   SET_CATEGORIES: (state, categories) => {
     state.categories = categories
