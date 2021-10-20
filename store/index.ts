@@ -64,7 +64,7 @@ export const mutations: MutationTree<WebsitesState> = {
 
 export const actions: ActionTree<WebsitesState, WebsitesState> = {
   async fetchData({ commit }) {
-    const data = await this.$axios.$get('https://theindex.tech/api')
+    const data = await this.$axios.$get('https://resources.sumit.co/api')
     commit('SET_CATEGORIES', data.categories)
     commit('SET_ALL_WEBSITES', data.websites)
     commit('SET_WEBSITE_GROUP', 0)
