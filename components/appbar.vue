@@ -11,11 +11,7 @@
     </v-toolbar-title>
 
     <v-spacer></v-spacer>
-    <a class="text-decoration-none" href="/">
-      <h3 class="px-6 py-2 text-center d-none d-sm-block">
-        Curated Design Resources for Developers
-      </h3>
-    </a>
+
     <v-spacer></v-spacer>
     <v-tooltip max-width="300px" bottom>
       <template v-slot:activator="{ on, attrs }">
@@ -108,5 +104,4 @@ export default Vue.extend({
 })
 </script>
 
-<style>
-</style>
+<style></style>

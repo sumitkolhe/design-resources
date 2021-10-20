@@ -3,8 +3,7 @@
     <v-card class="px-6 py-4">
       <v-row justify="center">
         <v-col justify="center" align="center">
-          <h2>The Index</h2>
-          <p>A curated list of design resources for developers.</p>
+          <h2>Design Resources</h2>
         </v-col>
       </v-row>
       <v-divider></v-divider>
@@ -16,7 +15,7 @@
               depressed
               class="mt-2"
               target="_blank"
-              href="https://sumit.codes"
+              href="https://sumit.co"
               >Sumit Kolhe</v-btn
             >
           </v-col>
@@ -29,7 +28,7 @@
               depressed
               class="mt-2"
               target="_blank"
-              href="https://github.com/sumitkolhe/theindex"
+              href="https://github.com/sumitkolhe/design-resource"
               >Source Code</v-btn
             >
           </v-col>
@@ -63,5 +62,4 @@ export default Vue.extend({
 })
 </script>
 
-<style>
-</style>
+<style></style>

@@ -3,7 +3,7 @@ export default {
   ssr: false,
   head: {
     titleTemplate: '%s - Design Resources for Developers',
-    title: 'The Index',
+    title: 'Resources',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -14,8 +14,7 @@ export default {
       {
         rel: 'stylesheet',
         type: 'text/css',
-        href:
-          'https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900',
+        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900',
       },
     ],
   },
