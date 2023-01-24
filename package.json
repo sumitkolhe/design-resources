@@ -1,31 +1,33 @@
 {
-  "name": "the-index",
-  "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt generate",
-    "start": "nuxt start",
-    "vercel": "vercel dev --listen 80",
-    "deploy": "vercel deploy --prod"
-  },
-  "dependencies": {
-    "@nuxtjs/axios": "^5.12.5",
-    "@nuxtjs/pwa": "^3.3.5",
-    "axios": "^0.21.1",
-    "cheerio": "^1.0.0-rc.5",
-    "core-js": "^3.8.3",
-    "nuxt": "^2.14.12",
-    "showdown": "^1.9.1"
+    "preview": "nuxt preview",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "start": "node -C production .output/server/index.mjs",
+    "lint": "eslint . --ext \".ts,.js,.vue,.json\" --fix",
+    "format": "prettier --write \"src/**/*.{js,ts,json,vue}\"",
+    "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.12",
-    "@nuxt/typescript-build": "^2.0.4",
-    "@nuxtjs/vuetify": "^1.11.3",
-    "@types/showdown": "^1.9.3",
-    "@vercel/node": "^1.9.0",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "prettier": "^2.2.1"
+    "@kolhe/eslint-config": "^1.1.8",
+    "@nuxtjs/tailwindcss": "^6.2.0",
+    "@tailwindcss/forms": "^0.5.3",
+    "@types/showdown": "^2.0.0",
+    "@vueuse/core": "^9.10.0",
+    "@vueuse/integrations": "^9.10.0",
+    "@vueuse/nuxt": "^9.10.0",
+    "eslint": "^8.32.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nuxt": "^3.0.0",
+    "nuxt-icon": "^0.1.8",
+    "prettier": "^2.8.3",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.7",
+    "cheerio": "^1.0.0-rc.12",
+    "showdown": "^2.1.0"
   }
 }

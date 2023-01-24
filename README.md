@@ -1,68 +1,42 @@
-# :fire: The Index
+# Nuxt 3 Minimal Starter
 
-A curated list of awesome design resources for web developers
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-# ✨ Features
+## Setup
 
-:heart: **Lightweight and minimalistic design**: Highly minimal and simple design
+Make sure to install the dependencies:
 
-:rainbow: **Dark Mode**: Tend to your eyes in the darkness
+```bash
+# yarn
+yarn install
 
-:zap: **Easy to use**: Simple and intuitive design thats easy to use
+# npm
+npm install
 
-:bookmark: **Bookmarks**: Bookmark your favourite resources easily.
-
-:mag: **Search**: Looking for a particular resource? Just search for it using the search button.
-
-:rocket: **Performance**: The Index is built using Vuejs, HTML5, and CSS3 which makes it lightning-fast and gives a great performance.
-
----
-
-## 🧰 Built with
-
-- VueJS
-- Vuetify
-- HTML5
-- CSS3
-
-## :construction_worker: Setup
-
-- Clone the Repository.
-
-```
-$ git clone https://github.com/sumitkolhe/theindex
+# pnpm
+pnpm install
 ```
 
-- Install the dependencies for the backend
+## Development Server
 
-```
-$ cd theindex
+Start the development server on http://localhost:3000
 
-$ npm install
-```
-
-- Compiles and hot-reloads for development
-
-```
-$ npm run serve
+```bash
+npm run dev
 ```
 
-- Compiles and minifies for production
+## Production
 
-```
-$ npm run build
-```
+Build the application for production:
 
-- Lints and fixes files
-
-```
-$ npm run lint
+```bash
+npm run build
 ```
 
-## ✍️ Authors
+Locally preview production build:
 
-- [**Sumit Kolhe**](https://github.com/sumitkolhe) - _Author_
+```bash
+npm run preview
+```
 
-## 📜 License
-
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) - see the [LICENSE](LICENSE) file for details.
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
