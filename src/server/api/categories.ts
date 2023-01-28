@@ -15,9 +15,7 @@ interface Resource {
 const converter = new showdown.Converter()
 converter.setFlavor('github')
 
-export default defineEventHandler(async (event) => {
-  const { category } = getQuery(event)
-
+export default defineEventHandler(async () => {
   const response = await $fetch<string>(
     'https://raw.githubusercontent.com/bradtraversy/design-resources-for-developers/master/readme.md'
   )
@@ -66,15 +64,10 @@ export default defineEventHandler(async (event) => {
       }
     })
 
-  if (category) return resources.filter((i) => i.name.toLowerCase() === category.toString().toLowerCase())
-
-  const resp: any[] = []
-
-  resources.forEach((r) => {
-    r.websites.forEach((w) => {
-      resp.push(w)
-    })
+  return resources.map((i) => {
+    return {
+      name: i.name,
+      description: i.description,
+    }
   })
-
-  return resp
 })

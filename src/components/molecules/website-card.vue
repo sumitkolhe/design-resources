@@ -17,6 +17,12 @@ defineProps({
     default: () => '',
   },
 })
+
+const imageError = ref(false)
+
+const setAltImg = () => {
+  imageError.value = true
+}
 </script>
 
 <template>
@@ -25,10 +31,18 @@ defineProps({
   >
     <nuxt-link :to="link" target="_blank">
       <img
+        v-if="!imageError"
         :src="icon"
         class="h-14 w-14 rounded-full bg-gray-900 border-2 dark:border-gray-700 border-gray-800"
-        alt="s"
+        @error="setAltImg"
       />
+
+      <div
+        v-else
+        class="h-14 w-14 rounded-full flex items-center justify-center bg-gray-200 border-2 dark:border-gray-700 border-gray-800"
+      >
+        <p class="text-2xl font-bold">{{ title.slice(0, 1) }}</p>
+      </div>
 
       <div class="mt-4 mb-2 flex-col space-y-2 dark:text-gray-100">
         <p class="font-medium">{{ title }}</p>
